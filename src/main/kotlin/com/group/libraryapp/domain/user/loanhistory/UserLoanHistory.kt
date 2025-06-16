@@ -1,4 +1,4 @@
-package com.group.libraryapp.domain.loanhistory
+package com.group.libraryapp.domain.user.loanhistory
 
 import com.group.libraryapp.domain.user.User
 import javax.persistence.*
