@@ -21,6 +21,10 @@ public class UserLoanHistory {
 
   private String bookName;
 
+  public boolean isReturn() {
+    return isReturn;
+  }
+
   private boolean isReturn;
 
   public UserLoanHistory() {
@@ -39,6 +43,10 @@ public class UserLoanHistory {
 
   public void doReturn() {
     this.isReturn = true;
+  }
+
+  public User getUser() {
+    return this.user;
   }
 
 }
