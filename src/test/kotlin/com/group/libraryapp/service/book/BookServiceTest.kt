@@ -2,9 +2,9 @@ package com.group.libraryapp.service.book
 
 import com.group.libraryapp.domain.book.Book
 import com.group.libraryapp.domain.book.BookRepository
+import com.group.libraryapp.domain.loanhistory.UserLoanHistory
 import com.group.libraryapp.domain.user.User
 import com.group.libraryapp.domain.user.UserRepository
-import com.group.libraryapp.domain.user.loanhistory.UserLoanHistory
 import com.group.libraryapp.domain.user.loanhistory.UserLoanHistoryRepository
 import com.group.libraryapp.dto.book.request.BookLoanRequest
 import com.group.libraryapp.dto.book.request.BookRequest
@@ -18,7 +18,7 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
 
 @SpringBootTest
-class JavaBookServiceTest @Autowired constructor (
+class BookServiceTest @Autowired constructor (
     private val bookRepository: BookRepository,
     private val bookService: BookService,
     private val userRepository: UserRepository,
@@ -71,7 +71,13 @@ class JavaBookServiceTest @Autowired constructor (
         // given
         bookRepository.save(Book("이상한 나라의 엘리스"))
         val savedUser = userRepository.save(User("jamey", null))
-        userLoanRepository.save(UserLoanHistory(savedUser, "이상한 나라의 엘리스", false))
+        userLoanRepository.save(
+            UserLoanHistory(
+                savedUser,
+                "이상한 나라의 엘리스",
+                false
+            )
+        )
         val request = BookLoanRequest("jamey", "이상한 나라의 엘리스")
 
         // when * then
@@ -86,7 +92,13 @@ class JavaBookServiceTest @Autowired constructor (
     fun returnBookTest() {
         // given
         val savedUser = userRepository.save(User("jamey", null))
-        userLoanRepository.save(UserLoanHistory(savedUser, "이상한 나라의 엘리스", false))
+        userLoanRepository.save(
+            UserLoanHistory(
+                savedUser,
+                "이상한 나라의 엘리스",
+                false
+            )
+        )
         val request = BookReturnRequest("jamey", "이상한 나라의 엘리스")
 
         // when
