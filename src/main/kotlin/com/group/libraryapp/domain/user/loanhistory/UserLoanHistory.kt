@@ -5,7 +5,7 @@ import javax.persistence.*
 
 @Entity
 class UserLoanHistory(
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     val user: User,
 
     val bookName: String,
